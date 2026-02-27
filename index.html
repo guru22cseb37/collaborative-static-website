@@ -1,88 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Home - My Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Unmatched Experience</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- Navigation (existing) -->
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>
-  </nav>
+  <!-- Background Effects -->
+  <div class="noise-overlay"></div>
+  <div id="glow-blob"></div>
+  <div id="blurred-backdrop"></div>
 
-  <!-- Home Section (existing) -->
-  <section id="home">
-    <h1>Welcome to My Website</h1>
-    <p>This is the home page.</p>
-  </section>
+  <!-- Content Layer -->
+  <div class="content-wrapper">
 
-  <!-- ================== NEW CONTENT STARTS HERE ================== -->
+    <nav>
+      <a href="index.html" class="active">Index</a>
+      <a href="about.html">Architecture</a>
+      <a href="contact.html">Connect</a>
+    </nav>
 
-  <!-- Introduction Section -->
-  <section id="intro">
-    <h2>About This Project</h2>
-    <p>
-      This collaborative static website is created as a learning project to
-      understand the fundamentals of HTML, CSS, and teamwork in web development.
-    </p>
-  </section>
+    <main>
+      <section class="hero reveal">
+        <h1>Digital<br>Perfection</h1>
+        <p class="reveal delay-1">
+          Setting an unmatched standard in web aesthetics. A collaborative masterpiece fused with bleeding-edge design,
+          hyper-fluid interactions, and absolute minimalist luxury.
+        </p>
+      </section>
 
-  <!-- Objectives Section -->
-  <section id="objectives">
-    <h2>Project Objectives</h2>
-    <ul>
-      <li>Learn basic HTML structure</li>
-      <li>Practice linking multiple pages</li>
-      <li>Work collaboratively using Git and GitHub</li>
-      <li>Build confidence in frontend development</li>
-    </ul>
-  </section>
+      <section id="features">
+        <h2 class="reveal">The Construct</h2>
+        <div class="card-grid">
+          <div class="premium-card reveal delay-1">
+            <div class="card-content">
+              <h3>Immersive Depth</h3>
+              <p>Experience true spatial design. Advanced glassmorphism layered over dynamic neon tracking blobs creates
+                a living, breathing interface.</p>
+            </div>
+          </div>
+          <div class="premium-card reveal delay-2">
+            <div class="card-content">
+              <h3>Kinetic Flow</h3>
+              <p>Every interaction is strictly choreographed. Scroll reveals, magnetic hover states, and smooth easing
+                functions govern the layout.</p>
+            </div>
+          </div>
+          <div class="premium-card reveal delay-3">
+            <div class="card-content">
+              <h3>Absolute Foundation</h3>
+              <p>Built purely on HTML5, CSS3, and microscopic Vanilla JavaScript. Zero heavy frameworks. Extreme
+                performance.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <!-- Technologies Section -->
-  <section id="technologies">
-    <h2>Technologies Used</h2>
-    <p>
-      This project uses simple and beginner-friendly technologies:
-    </p>
-    <ul>
-      <li>HTML5 for structure</li>
-      <li>CSS3 for styling</li>
-      <li>Git & GitHub for version control</li>
-    </ul>
-  </section>
+      <section id="architects">
+        <h2 class="reveal">The Synergists</h2>
+        <div class="card-grid">
+          <div class="premium-card reveal">
+            <div class="card-content">
+              <h3>Navbila K</h3>
+              <p>Core System & Structure</p>
+            </div>
+          </div>
+          <div class="premium-card reveal delay-1">
+            <div class="card-content">
+              <h3>Sarathipriyan</h3>
+              <p>Architectural Context</p>
+            </div>
+          </div>
+          <div class="premium-card reveal delay-2">
+            <div class="card-content">
+              <h3>Guru Prasad</h3>
+              <p>Client Protocols & Comms</p>
+            </div>
+          </div>
+          <div class="premium-card reveal delay-3">
+            <div class="card-content">
+              <h3>Guruprasath S K</h3>
+              <p>Visual Engine & UX Physics</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <!-- Team Section (your provided content) -->
-  <section id="team">
-    <h2>Our Team</h2>
-    <p>Meet our team of enthusiastic learners working together to build this project:</p>
-    <ul>
-      <li>Navbila K – Home page development</li>
-      <li>Sarathipriyan – About page development</li>
-      <li>Guru Prasad – Contact page development</li>
-      <li>Guruprasath S K – CSS design</li>
-    </ul>
-  </section>
+    <footer>
+      <p>© 2026 The Collaborative. A paradigm shift in static web.</p>
+    </footer>
 
-  <!-- Navigation Help Section -->
-  <section id="navigation-help">
-    <h2>Explore the Website</h2>
-    <p>
-      Use the navigation menu above to explore different sections of the website:
-    </p>
-    <ul>
-      <li><strong>Home:</strong> Overview of the project</li>
-      <li><strong>About:</strong> Learn more about the team and purpose</li>
-      <li><strong>Contact:</strong> Get in touch with us</li>
-    </ul>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2026 Collaborative Static Website
-  </footer>
+  <!-- Interactive logic -->
+  <script>
+    // Blob follow cursor physics
+    const blob = document.getElementById("glow-blob");
+    document.body.onpointermove = event => {
+      const { clientX, clientY } = event;
+      blob.animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+      }, { duration: 3000, fill: "forwards" });
+    };
 
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Trigger initial reveals on load
+    setTimeout(() => {
+      document.querySelectorAll('.hero.reveal, .hero .reveal').forEach(el => el.classList.add('active'));
+    }, 100);
+  </script>
 </body>
+
 </html>

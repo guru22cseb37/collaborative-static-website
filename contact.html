@@ -1,48 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Connect - Unmatched Experience</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <h2>Collaborative Static Website</h2>
-</header>
+    <!-- Background Effects -->
+    <div class="noise-overlay"></div>
+    <div id="glow-blob"></div>
+    <div id="blurred-backdrop"></div>
 
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>
-</nav>
+    <!-- Content Layer -->
+    <div class="content-wrapper">
 
-<main>
-    <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Index</a>
+            <a href="about.html">Architecture</a>
+            <a href="contact.html" class="active">Connect</a>
+        </nav>
 
-    <div class="contact-box">
+        <main>
+            <section class="hero reveal" style="min-height: auto; padding-top: 180px; padding-bottom: 40px;">
+                <h1 style="font-size: clamp(3rem, 6vw, 6rem);">Initialize Sequence</h1>
+            </section>
 
-        <div class="contact-info">
-            <p><strong>Email:</strong> support@collaborativewebsite.com</p>
-            <p><strong>Phone:</strong> +91 98765 43210</p>
-            <p><strong>Location:</strong> Tamil Nadu, India</p>
-        </div>
+            <section style="padding-top: 0">
+                <div class="contact-container reveal delay-1">
 
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+                    <div class="contact-meta">
+                        <p>Establish a direct sub-ether link with the architects of this digital construct.</p>
+
+                        <div class="meta-details">
+                            <div class="meta-item">
+                                <span>Secure Channel</span>
+                                <p>sys.admin@collaborative.io</p>
+                            </div>
+                            <div class="meta-item">
+                                <span>Frequency</span>
+                                <p>+91 98765 43210</p>
+                            </div>
+                            <div class="meta-item">
+                                <span>Coordinates</span>
+                                <p>Tamil Nadu, Terra</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="neo-form" onsubmit="event.preventDefault(); alert('Transmission Successful.');">
+                        <div class="input-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Identifier (Name)</label>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Return Protocol (Email)</label>
+                        </div>
+
+                        <div class="input-group">
+                            <textarea id="message" required></textarea>
+                            <label for="message">Data Payload (Message)</label>
+                        </div>
+
+                        <button type="submit" class="magnet-btn">Transmit Data</button>
+                    </form>
+
+                </div>
+            </section>
+        </main>
+
+        <footer style="margin-top: auto">
+            <p>© 2026 The Collaborative. A paradigm shift in static web.</p>
+        </footer>
 
     </div>
-</main>
 
-<footer>
-    © 2026 Collaborative Static Website
-</footer>
+    <script>
+        const blob = document.getElementById("glow-blob");
+        document.body.onpointermove = event => {
+            const { clientX, clientY } = event;
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, { duration: 3000, fill: "forwards" });
+        };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }, 100);
+    </script>
 </body>
+
 </html>

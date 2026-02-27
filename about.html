@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture - Unmatched Experience</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>
-  </nav>
+  <!-- Background Effects -->
+  <div class="noise-overlay"></div>
+  <div id="glow-blob"></div>
+  <div id="blurred-backdrop"></div>
 
-  <section>
-    <h1>About Us</h1>
+  <!-- Content Layer -->
+  <div class="content-wrapper">
 
-    <p>
-      This website is a simple single-page project created to learn
-      the basics of HTML and web development.
-    </p>
+    <nav>
+      <a href="index.html">Index</a>
+      <a href="about.html" class="active">Architecture</a>
+      <a href="contact.html">Connect</a>
+    </nav>
 
-    <p>
-      It is built as a collaborative project where team members
-      contribute content and ideas.
-    </p>
+    <main>
+      <section class="hero reveal">
+        <h1 style="font-size: clamp(3rem, 6vw, 7rem);">The Blueprint</h1>
+      </section>
 
-    <p>
-      Navigate back to the <a href="index.html#home">Home</a> page or
-      reach us through the <a href="contact.html#contact">Contact</a> section.
-    </p>
-  </section>
+      <section style="padding-top: 0">
+        <div class="premium-card reveal">
+          <div class="card-content" style="padding: 100px 8vw;">
+            <p
+              style="font-size: 2rem; color: #fff; max-width: 1000px; line-height: 1.4; margin-bottom: 40px; font-weight: 400; letter-spacing: -0.02em;">
+              We didn't just write code; we engineered an aesthetic singularity. This project serves as an apex study in
+              redefining what bare-minimum HTML and CSS can achieve when pushed to the absolute theoretical limit.
+            </p>
+            <p style="font-size: 1.5rem; max-width: 800px;">
+              By combining sub-pixel rendering tricks, SVG fractals, fluid geometry, and mathematically perfect kerning,
+              the collaborative effort stands alone. No one can meet this standard without resorting to multi-megabyte
+              JavaScript frameworks.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
 
+    <footer style="margin-top: auto">
+      <p>© 2026 The Collaborative. A paradigm shift in static web.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    const blob = document.getElementById("glow-blob");
+    document.body.onpointermove = event => {
+      const { clientX, clientY } = event;
+      blob.animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+      }, { duration: 3000, fill: "forwards" });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('active'); }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    setTimeout(() => {
+      document.querySelectorAll('.hero.reveal, .hero .reveal').forEach(el => el.classList.add('active'));
+    }, 100);
+  </script>
 </body>
+
 </html>
